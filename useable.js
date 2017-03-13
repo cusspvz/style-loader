@@ -14,6 +14,7 @@ module.exports.pitch = function(remainingRequest) {
 		"var content = require(" + loaderUtils.stringifyRequest(this, "!!" + remainingRequest) + ");",
 		"if(typeof content === 'string') content = [[module.id, content, '']];",
 		"if(content.locals) exports.locals = content.locals;",
+		"exports.content = content[0][1]",
 		"exports.use = exports.ref = function() {",
 		"	if(!(refs++)) {",
 		"		dispose = require(" + loaderUtils.stringifyRequest(this, "!" + path.join(__dirname, "addStyles.js")) + ")(content, " + JSON.stringify(query) + ");",
